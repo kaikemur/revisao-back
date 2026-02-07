@@ -10,6 +10,7 @@ model Food {
     id        Int      @id @default(autoincrement())
     nome      String
     descricao String?
+    preco     Decimal
     ano       Int
     category  String
     avaliable Boolean
