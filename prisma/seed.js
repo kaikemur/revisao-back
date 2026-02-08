@@ -23,7 +23,7 @@ async function main() {
                 ano: 2024,
                 preco: 15.0,
                 category: 'Lanches',
-                avaliable: true,
+                avaliable: false,
             },
             {
                 nome: 'Vinho Tinto Reserva',
@@ -39,7 +39,7 @@ async function main() {
                 ano: 2021,
                 preco: 54.50,
                 category: 'Bebidas',
-                avaliable: true,
+                avaliable: false,
             },
             {
                 nome: 'lasanha',

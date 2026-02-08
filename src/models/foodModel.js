@@ -13,7 +13,7 @@ export const findAll = async (filters = {}) => {
     if (ano !== undefined) where.ano = parseInt(ano);
     if (preco !== undefined) where.preco = parseFloat(preco);
     if (category !== undefined) where.category = parseFloat(category);
-     if (avaliable !== undefined) where.avaliable = parseFloat(avaliable);
+     if (avaliable !== undefined) where.avaliable = Boolean(avaliable);
 
     return await prisma.food.findMany({
         where,

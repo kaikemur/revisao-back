@@ -27,9 +27,12 @@ export const create = async (req, res) => {
         const { nome, descricao, ano, preco, category, avaliable } = req.body;
 
         if (!nome) return res.status(400).json({ error: 'O nome (nome) é obrigatório!' });
+        if (!descricao) return res.status(400).json({ error: 'A descrição (descricao) é obrigatória!' });
         if (!ano) return res.status(400).json({ error: 'O ano (ano) é obrigatório!' });
-        if (!preco) return res.status(400).json({ error: 'O preço (preco) é obrigatório!' });
-        if (!category) return res.status(400).json({ error: 'A categoria (categoria) é obrigatório!' });
+        if (!preco || preco < 0) return res.status(400).json({ error: 'O preço (preco) é obrigatório e deve ser maior que zero!' });
+        if (category && !['Bebidas', 'Pratos Principais', 'Acompanhamentos', 'Lanches'].includes(category)) {
+            return res.status(400).json({ error: 'A categoria (categoria) é invalida coloque uma categoria valida como : Bebidas, Pratos Principais, Acompanhamentos, Lanches' });}
+        if (!category) return res.status(400).json({ error:'A categoria (categoria) é obrigatório!' });
         if (!avaliable) return res.status(400).json({ error: 'A avaliable (avaliable) é obrigatório!' });
         const data = await model.create({
             nome,
